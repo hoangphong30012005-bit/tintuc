@@ -1,0 +1,20 @@
+LUỒNG ĐỌC MỚI
+
+Mở trang
+→ Quảng cáo
+→ bấm ×
+→ Shopee mở ở cửa sổ/tab mới
+→ quay lại trang đọc
+→ TIẾP TỤC XEM VIDEO
+→ TikTok
+→ quay lại trang
+→ xem video.
+
+Mật khẩu quản lý: hoang2005@@
+
+Các file:
+- index.html
+- admin.html
+- posts.json
+
+Upload cả 3 file vào repository Tintuc24.

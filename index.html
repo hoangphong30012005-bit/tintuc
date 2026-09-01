@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tin Tức Đường Phố</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f5f5;color:#171717;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial}
+header{background:#111820;color:#fff;padding:16px}.head{max-width:900px;margin:auto;display:flex;justify-content:space-between}.logo{font-weight:800;font-size:21px}.admin{color:#fff;text-decoration:none;font-size:13px}
+main{max-width:900px;margin:auto;padding:20px 14px}.card{background:#fff;border-radius:16px;padding:15px;margin:16px 0;box-shadow:0 3px 15px #0001}.title{font-size:24px;font-weight:800}.date{color:#777;font-size:14px;margin:7px 0 12px}.desc{line-height:1.5;color:#555}
+video{width:100%;background:#000;border-radius:12px;margin-top:12px;display:block}.videos{display:grid;grid-template-columns:1fr 1fr;gap:14px}.vtitle{font-weight:700;margin-top:8px}
+@media(max-width:650px){.videos{grid-template-columns:1fr}}
+.overlay{position:fixed;inset:0;z-index:999;background:#000d;display:flex;align-items:center;justify-content:center;padding:18px}.adbox{position:relative;width:min(94vw,600px)}.adbox img{width:100%;display:block;border-radius:16px}.close{position:absolute;right:-8px;top:-18px;width:56px;height:56px;border-radius:50%;background:#fff;color:#555;text-decoration:none;text-align:center;font-size:43px;line-height:52px;font-weight:800}.buy{display:block;margin-top:12px;background:#ee4d2d;color:#fff;padding:14px;text-align:center;border-radius:10px;text-decoration:none;font-weight:800}
+.cont{position:fixed;inset:0;z-index:998;background:#000d;display:none;align-items:center;justify-content:center;padding:20px}.contbox{background:#fff;color:#171717;width:min(92vw,440px);border-radius:18px;padding:22px;text-align:center}.btn{width:100%;border:0;border-radius:11px;padding:15px;margin-top:10px;font-weight:800;font-size:17px}.tik{background:#111;color:#fff}.watch{background:#1769ff;color:#fff}
+</style></head>
+<body>
+<header><div class="head"><div class="logo">Tin Tức Đường Phố</div><a class="admin" href="admin.html">Quản lý</a></div></header>
+<main><div id="posts"></div></main>
+
+<div class="overlay" id="ad"><div class="adbox">
+<a class="close" id="closeAd" href="https://s.shopee.vn/3qMlWZaBkP" target="_blank" rel="noopener noreferrer">×</a>
+<a href="https://s.shopee.vn/3qMlWZaBkP" target="_blank" rel="noopener noreferrer"><img src="https://cdn.phototourl.com/free/2026-09-01-857865cd-565f-46ac-a40e-60a1bd475fe6.jpg" alt="Quảng cáo"></a>
+<a class="buy" href="https://s.shopee.vn/3qMlWZaBkP" target="_blank" rel="noopener noreferrer">🛒 XEM ƯU ĐÃI TRÊN SHOPEE</a>
+</div></div>
+
+<div class="cont" id="cont"><div class="contbox"><h2>▶ TIẾP TỤC XEM VIDEO</h2><p>Bấm nút bên dưới để mở TikTok. Sau đó quay lại trang để xem video.</p><button class="btn tik" id="tik">MỞ TIKTOK</button><button class="btn watch" id="watch">TIẾP TỤC XEM VIDEO</button></div></div>
+
+<script>
+const TIKTOK="https://vt.tiktok.com/ZS9BQgahS3qTt-stnQI/";
+const A="tintuc24_ad";
+const T="tintuc24_tiktok";
+const ad=document.getElementById("ad");
+const cont=document.getElementById("cont");
+
+function flow(){
+  const adDone=sessionStorage.getItem(A)==="1";
+  const tikDone=sessionStorage.getItem(T)==="1";
+
+  if(!adDone){
+    ad.style.display="flex";
+    cont.style.display="none";
+    return;
+  }
+
+  ad.style.display="none";
+  cont.style.display=tikDone?"none":"flex";
+}
+
+/*
+  Bấm X:
+  1) Đánh dấu đã qua quảng cáo.
+  2) Link href của X mở Shopee.
+  3) Vì target=_blank, trang đọc vẫn còn nguyên.
+  4) Khi người đọc quay về trang đọc, nút TIẾP TỤC XEM VIDEO đã hiện sẵn.
+*/
+document.getElementById("closeAd").addEventListener("click",function(){
+  sessionStorage.setItem(A,"1");
+  setTimeout(flow,50);
+});
+
+/*
+  Bấm TIẾP TỤC XEM VIDEO:
+  mở TikTok. Khi quay lại trang, video đã được mở khóa.
+*/
+document.getElementById("tik").addEventListener("click",function(){
+  sessionStorage.setItem(T,"1");
+  window.location.href=TIKTOK;
+});
+
+document.getElementById("watch").addEventListener("click",function(){
+  sessionStorage.setItem(T,"1");
+  flow();
+});
+
+window.addEventListener("pageshow",flow);
+document.addEventListener("visibilitychange",function(){
+  if(!document.hidden) flow();
+});
+
+function esc(s){
+  return String(s??"").replace(/[&<>"']/g,c=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+async function load(){
+  try{
+    const r=await fetch("posts.json?"+Date.now());
+    const data=await r.json();
+
+    document.getElementById("posts").innerHTML=data.map(p=>`
+      <article class="card">
+        <div class="title">${esc(p.title)}</div>
+        <div class="date">${esc(p.date)}</div>
+        <div class="desc">${esc(p.description)}</div>
+        <div class="videos">
+          ${p.video1?`<div>
+            <video controls playsinline preload="metadata" poster="${esc(p.poster||"")}">
+              <source src="${esc(p.video1)}" type="video/mp4">
+            </video>
+            <div class="vtitle">Video 1 🔊</div>
+          </div>`:""}
+          ${p.video2?`<div>
+            <video controls playsinline preload="metadata" poster="${esc(p.poster||"")}">
+              <source src="${esc(p.video2)}" type="video/mp4">
+            </video>
+            <div class="vtitle">Video 2 🔊</div>
+          </div>`:""}
+        </div>
+      </article>
+    `).join("");
+  }catch(e){
+    document.getElementById("posts").innerHTML=
+      "<div class='card'>Chưa tải được dữ liệu bài viết.</div>";
+  }
+}
+
+load();
+flow();
+</script></body></html>

@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "title": "Video mẫu",
+    "date": "01/09/2026",
+    "description": "Bài mẫu. Bạn có thể thêm bài mới từ trang quản lý.",
+    "video1": "https://www.image2url.com/r2/default/videos/1788243750857-2f9f3c74-032d-45fa-af63-040b3345843a.mp4",
+    "video2": "https://www.image2url.com/r2/default/videos/1788186729303-e9fd89fb-ee7a-479d-b849-1aa798096485.mp4",
+    "poster": "https://cdn.phototourl.com/free/2026-09-01-857865cd-565f-46ac-a40e-60a1bd475fe6.jpg"
+  }
+]
