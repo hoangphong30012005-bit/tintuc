@@ -1,0 +1,26 @@
+TIN TUC 24 - BO 3 FILE
+
+1. Upload 3 file nay vao repository Tintuc24:
+   - index.html
+   - admin.html
+   - posts.json
+
+2. Mo trang GitHub Pages:
+   https://hoangphong30012005-bit.github.io/Tintuc24/
+
+3. Trang doc:
+   /index.html
+
+4. Trang quan ly:
+   /admin.html
+
+5. Them bai moi:
+   - Mo admin.html
+   - Nhap tieu de, ngay, mo ta, URL MP4
+   - Bam "Them bai"
+   - Bam "Tai posts.json"
+   - Vao GitHub repository -> mo posts.json -> sua/thay noi dung bang file posts.json moi
+   - Cho GitHub Pages cap nhat roi tai lai trang doc.
+
+LUU Y:
+Trang quan ly nay khong luu du lieu len GitHub tu dong. No tao file posts.json de ban upload lai. Cach nay an toan hon viec dat GitHub token vao HTML.
