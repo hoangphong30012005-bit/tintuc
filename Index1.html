@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width,
+                 initial-scale=1,
+                 maximum-scale=1,
+                 user-scalable=no">
+
+  <title>Tin Tức</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    }
+
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.72);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+    .box {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 25px 20px 20px;
+      text-align: center;
+    }
+
+    .close {
+      position: absolute;
+      top: -52px;
+      right: 0;
+
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(0,0,0,.75);
+      color: #fff;
+
+      border-radius: 50%;
+      text-decoration: none;
+
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 400;
+
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .logo {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    p {
+      margin: 0;
+      color: #666;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .button {
+      display: block;
+      margin-top: 20px;
+      padding: 15px;
+
+      background: #000;
+      color: #fff;
+
+      border-radius: 10px;
+      text-decoration: none;
+
+      font-size: 16px;
+      font-weight: 700;
+
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .button:active,
+    .close:active {
+      opacity: .7;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="popup">
+
+    <div class="box">
+
+      <!-- BẤM X -> LINK TIKTOK -->
+      <a
+        class="close"
+        href="https://vt.tiktok.com/ZS9BsCRKVFqYj-uwxfQ/"
+        aria-label="Mở TikTok">
+        ×
+      </a>
+
+      <div class="logo">♪</div>
+
+      <h1>Xem video trên TikTok</h1>
+
+      <p>
+        Nhấn nút bên dưới để xem video trên TikTok.
+      </p>
+
+      <!-- NÚT DỰ PHÒNG -->
+      <a
+        class="button"
+        href="https://vt.tiktok.com/ZS9BsCRKVFqYj-uwxfQ/">
+        ▶ MỞ TRÊN TIKTOK
+      </a>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
